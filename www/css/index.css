@@ -225,11 +225,11 @@ html, body{
   100% { margin-left: 0px; }
 }
 
-.na-show_result{margin-left: 0px;}
-.na-hide_content{margin-left: 105%;}
+.na-show_result{margin-left: 0px !important;}
+.na-hide_content{margin-left: 105% !important;}
 
-.na-hide_result{margin-left: -105%;}
-.na-show_content{margin-left: 10px;}
+.na-hide_result{margin-left: -105% !important;}
+.na-show_content{margin-left: 10px !important;}
 
 .show_content_r {
     -webkit-animation: animatecontent-result 0.4s; /* Safari 4+ */
