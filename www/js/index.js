@@ -100,23 +100,30 @@ function toggleNav(){
     showNav();
   else
     hideNav();
+  closeSettings();
 }
 
 function disableAnimations () {
   animate = false;
-  document.getElementById("settings").className = "settings-close";
+  closeSettings();
   document.getElementById("dis_anim").style.display = "none";
   document.getElementById("e_anim").style.display = "block";
 }
 function enableAnimations () {
   animate = true;
-  document.getElementById("settings").className = "settings-close";
+  closeSettings();
   document.getElementById("e_anim").style.display = "none";
   document.getElementById("dis_anim").style.display = "block";
 }
 
 function launchSettings () {
+  if (navOn == 1)
+    hideNav();
   document.getElementById("settings").className = "settings-open";
+}
+
+function closeSettings () {
+  document.getElementById("settings").className = "settings-close";
 }
 
 function showNav () {
@@ -535,7 +542,7 @@ function showFullStory (date, title, images, video, this_story) {
       temp += "<img style='width:100%;margin-bottom:3px;' src='" + images[i] + "' />";
   };
   story += "<div class='images'>" + temp + "</div>";
-  story += "<div class='video'>" + video + "</div>";
+  story += "<div class='video'><iframe src='" + video + "' allowfullscreen='true' frameborder='0' width='100%' style='min-height:300px;'></iframe></div>";
   story += "<div class='story-content'>" + this_story + "</div>";
   document.getElementById("content").innerHTML = story;
   showC();
@@ -559,6 +566,7 @@ function hideC () {
     document.getElementById('content').className='na-hide_content';
     document.getElementById('results').className='na-show_result';
   }
+  closeSettings();
 }
 
 function wrapCleanse(obj) {
