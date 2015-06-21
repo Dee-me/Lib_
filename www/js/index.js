@@ -24,7 +24,9 @@ var app = {
 app.initialize();
 
 var navOn = 0;
+var animate = true;
 
+/*
 rossgerbasi.glass.getLaunchParams(
     function(results) {
         console.log(results);
@@ -33,6 +35,7 @@ rossgerbasi.glass.getLaunchParams(
         console.log("Error getting launch Params");
     }
 );
+*/
 
 
 
@@ -54,6 +57,7 @@ var w = 0;
     $("#results").css("width", w+'px');
     $("#content").css("height", contentHeight+'px');
     $("#content").css("width", contentWidth+'px');
+    $(".main").css("display", "block");
     //$("#content").css("marginLeft", (contentWidth+40)+'px');
     loadStories();
 });
@@ -70,13 +74,25 @@ $(window).resize(function() {
 });
 
 function animateMove () {
+  if (animate == true) {
     $("#results").animate({"marginLeft" : "-"+(w+20)}, 300);
     $("#content").animate({"marginLeft" : "10px"}, 300);
+  }
+  else{
+    $("#results").css("marginLeft", "-"+(w+20));
+    $("#content").css("marginLeft", "10px");
+  }
 }
 
 function animateReverse () {
+  if (animate == true) {
     $("#content").animate({"marginLeft" : (contentWidth+40)+'px' }, 300);
     $("#results").animate({"marginLeft" : "0px"}, 300);
+  }
+  else{
+    $("#content").css("marginLeft", (contentWidth+40)+'px');
+    $("#results").css("marginLeft", "0px");
+  }
 }
 
 function toggleNav(){
@@ -86,14 +102,41 @@ function toggleNav(){
     hideNav();
 }
 
+function disableAnimations () {
+  animate = false;
+  document.getElementById("settings").className = "settings-close";
+  document.getElementById("dis_anim").style.display = "none";
+  document.getElementById("e_anim").style.display = "block";
+}
+function enableAnimations () {
+  animate = true;
+  document.getElementById("settings").className = "settings-close";
+  document.getElementById("e_anim").style.display = "none";
+  document.getElementById("dis_anim").style.display = "block";
+}
+
+function launchSettings () {
+  document.getElementById("settings").className = "settings-open";
+}
+
 function showNav () {
-  document.getElementById("overlay").className = "show-nav-op";
-  document.getElementById("nav").className = "show-nav";
+  if (animate) {
+    document.getElementById("overlay").className = "show-nav-op";
+    document.getElementById("nav").className = "show-nav";
+  }else{
+    document.getElementById("overlay").className = "na-show-nav-op";
+    document.getElementById("nav").className = "na-show-nav";
+  }
   navOn = 1;
 }
 function hideNav () {
-  document.getElementById("nav").className = "hide-nav";
-  document.getElementById("overlay").className = "hide-nav-op";
+  if (animate) {
+    document.getElementById("nav").className = "hide-nav";
+    document.getElementById("overlay").className = "hide-nav-op";
+  }else{
+    document.getElementById("nav").className = "na-hide-nav";
+    document.getElementById("overlay").className = "na-hide-nav-op";
+  }
   navOn = 0;
 }
 
@@ -499,13 +542,23 @@ function showFullStory (date, title, images, video, this_story) {
 }
 
 function showC () {
+  if (animate) {
     document.getElementById('results').className='show_content_r';
     document.getElementById('content').className='show_content_c';
+  }else{
+    document.getElementById('results').className='na-hide_result';
+    document.getElementById('content').className='na-show_content';
+  }
 }
 
 function hideC () {
+  if (animate) {
     document.getElementById('results').className='hide_content_r';
     document.getElementById('content').className='hide_content_c';
+  }else{
+    document.getElementById('content').className='na-hide_content';
+    document.getElementById('results').className='na-show_result';
+  }
 }
 
 function wrapCleanse(obj) {
@@ -531,9 +584,15 @@ function wrapImages(obj) {
 function toggleFullImage (elem) {
   var e = document.getElementById(elem);
   if (e.style.maxHeight == "50px")
-    $("#"+elem).animate({'maxHeight': '700px'}, 400);
+    if (animate)
+      $("#"+elem).animate({'maxHeight': '700px'}, 400);
+    else
+      $("#"+elem).css('maxHeight', '700px');
   else
-    $("#"+elem).animate({'maxHeight': '50px'}, 400);
+    if (animate)
+      $("#"+elem).animate({'maxHeight': '50px'}, 400);
+    else
+      $("#"+elem).css('maxHeight', '50px');
 }
 
 function randId () {
