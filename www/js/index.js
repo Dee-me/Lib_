@@ -5,6 +5,12 @@ var app = {
     },
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+        document.addEventListener("deviceready", function () {
+            document.addEventListener("menubutton", menuKeyDown, true);
+        }, false);
+        function menuKeyDown() {
+          alert('Menu button pressed.');
+        }
     },
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
