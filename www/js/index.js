@@ -22,6 +22,9 @@ var app = {
 };
 
 app.initialize();
+
+var navOn = 0;
+/*
 rossgerbasi.glass.getLaunchParams(
     function(results) {
         console.log(results);
@@ -30,6 +33,7 @@ rossgerbasi.glass.getLaunchParams(
         console.log("Error getting launch Params");
     }
 );
+*/
 
 
 var links = [];
@@ -73,6 +77,24 @@ function animateMove () {
 function animateReverse () {
     $("#content").animate({"marginLeft" : (contentWidth+40)+'px' }, 300);
     $("#results").animate({"marginLeft" : "0px"}, 300);
+}
+
+function toggleNav(){
+  if (navOn == 0)
+    showNav();
+  else
+    hideNav();
+}
+
+function showNav () {
+  document.getElementById("overlay").className = "show-nav-op";
+  document.getElementById("nav").className = "show-nav";
+  navOn = 1;
+}
+function hideNav () {
+  document.getElementById("nav").className = "hide-nav";
+  document.getElementById("overlay").className = "hide-nav-op";
+  navOn = 0;
 }
 
 function setXmlContent (content) {
