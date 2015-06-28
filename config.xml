@@ -12,7 +12,16 @@
     <icon src="img/icon.png" />
     <plugin name="cordova-plugin-whitelist" version="1" />
 
+    <preference name="target-device" value="universal"/>
+    <preference name="fullscreen" value="true"/>
+    <preference name="webviewbounce" value="true"/>
+    <preference name="prerendered-icon" value="true"/>
+    <preference name="stay-in-webview" value="true"/>
+    <preference name="exit-on-suspend" value="false"/>
+    <preference name="android-minSdkVersion" value="9"/>
+    <preference name="android-installLocation" value="auto"/>
     <preference name="orientation" value="portrait"/>
+    
     <plugin name="cordova-plugin-battery-status"/>
     <plugin name="cordova-plugin-camera"/>
     <plugin name="cordova-plugin-media-capture"/>

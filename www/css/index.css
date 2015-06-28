@@ -127,7 +127,7 @@ html, body{
     padding: 5px;padding-bottom: 18px;
     margin-top: 8px;
     overflow-y: hidden !important; 
-    height: 120px;
+    height: 130px;
 }
 #content{
     margin-top: 53px;
@@ -135,11 +135,11 @@ html, body{
     overflow-y: auto !important;
     margin-left: 105%;
 }
-.inner-content{height: 130px; overflow-y: hidden; }
+.inner-content{height: 140px; overflow-y: hidden; }
 .date{ font-family: 'Roboto', sans-serif; }
 .title{ font-family: 'Roboto', serif;font-weight: bold;font-size: 13px;padding-bottom: 5px;}
 .video{ font-family: 'Oswald', sans-serif; }
-.story{ font-family: 'PT Sans', sans-serif;display: block; /*height: 100px;*/ overflow: hidden;}
+.story{ font-family: 'PT Sans', sans-serif;display: block; height: 110px; overflow: hidden;}
 .images{ font-family: 'Slabo 27px', sans-serif; }
 .story_image{
     display: inline-block;
@@ -155,15 +155,6 @@ html, body{
   padding-top: 5px;
   padding-bottom: 10px;
 }
-/*
-.story_content{
-    font-family: 'PT Sans', sans-serif;
-    display: block;
-    max-height: 98px;
-    padding-left: 10px;
-    padding-bottom: 2px;
-    overflow: hidden;
-}*/
 .image_items{
     max-height: 90px;
     border: 1px solid #CCC;
