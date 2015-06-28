@@ -47,7 +47,7 @@ var app = {
 };
 
 app.initialize();
-app.checkConnection();
+//app.checkConnection();
 
 var navOn = 0;
 var animate = true;
