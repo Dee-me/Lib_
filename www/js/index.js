@@ -10,10 +10,10 @@ var app = {
             document.addEventListener("backbutton", backKeyDown, true);
         }, false);
         function menuKeyDown() {
-          alert('Menu button pressed.');
+          showNav();
         }
         function backKeyDown() {
-          alert('Back button pressed.');
+          toggleNav();
         }
     },
     onDeviceReady: function() {
@@ -343,12 +343,14 @@ function getIndividualStory (link, Z, all_count) {
                 }
 
                 // Remove this
+                /*
                 var bsssp = bspan[bs];
                 for (var bsp = 0; bsp < bsssp.length; bsp++) {
                   if(bsssp[bsp].content != undefined){
                     
                   }
                 }
+                */
               }
             }
           }
@@ -524,6 +526,7 @@ function getIndividualStory (link, Z, all_count) {
 
         var this_story = "<div class='section' onclick='showFullStory (\""+ replaceAll('\'', '', story_date) +"\", \""+ replaceAll('\'', '', story_title) + "\", \"" + img_array + "\", \"" + replaceAll('\'', '', video_link) + "\", \""+ replaceAll('\'', '', replaceAll('\"', '', main_story)) +"\" )'>";
 
+        this_story += "<div class='inner-content'>";
         this_story += "<div class='title'>" + story_title + "</div>";
 
         var num = 0;
@@ -535,7 +538,7 @@ function getIndividualStory (link, Z, all_count) {
           }
         }
         this_story += "<div class='story'><div class='story_content'>" + main_story + "</div></div>";
-        this_story += "</div>";
+        this_story +=  "</div></div>";
         //console.log(this_story);
         querySelector.innerHTML += wrapSection(this_story, all_count);
 
@@ -569,14 +572,20 @@ function showFullStory (date, title, images, video, this_story) {
 
   images = images.split(',');
   var temp = "";
-  for (var i = 0; i < images.length; i++) {
-    if (images[i] != undefined)
-      temp += "<img style='width:100%;margin-bottom:3px;' src='" + images[i] + "' />";
-  };
+  story += "<div class='images'><img style='width:100%;margin-bottom:3px;' src='" + images[0] + "' /></div>";
+
+  story += "<div class='story-content'>" + this_story + "</div>";
+
+  if(images.length > 1){
+    for (var i = 1; i < images.length; i++) {
+      if (images[i] != undefined)
+        temp += "<img style='width:100%;margin-bottom:3px;' src='" + images[i] + "' />";
+    }
+  }
   story += "<div class='images'>" + temp + "</div>";
   if (video != "")
     story += "<div class='video'><iframe src='" + video + "' allowfullscreen='true' frameborder='0' width='100%' style='min-height:300px;'></iframe></div>";
-  story += "<div class='story-content'>" + this_story + "</div>";
+  
   document.getElementById("content").innerHTML = story;
   showC();
 }

@@ -124,18 +124,20 @@ html, body{
     border-radius: 3px;
     box-shadow: 0px 0px 0px 1px #DDDDEC;
     background-color: #FDFDFC;
-    padding: 5px;padding-bottom: 10px;
+    padding: 5px;padding-bottom: 18px;
     margin-top: 8px;
-    overflow-y: auto; 
+    overflow-y: hidden !important; 
+    height: 120px;
 }
 #content{
     margin-top: 53px;
     margin-left: 10px;
-    overflow: auto;
+    overflow-y: auto !important;
     margin-left: 105%;
 }
+.inner-content{height: 130px; overflow-y: hidden; }
 .date{ font-family: 'Roboto', sans-serif; }
-.title{ font-family: 'Roboto', serif;font-weight: bold;font-size: 15px;padding-bottom: 10px;}
+.title{ font-family: 'Roboto', serif;font-weight: bold;font-size: 13px;padding-bottom: 5px;}
 .video{ font-family: 'Oswald', sans-serif; }
 .story{ font-family: 'PT Sans', sans-serif;display: block; /*height: 100px;*/ overflow: hidden;}
 .images{ font-family: 'Slabo 27px', sans-serif; }
@@ -144,6 +146,12 @@ html, body{
     float: left;
 }
 .story_content{
+  padding-top: 5px;
+  padding-bottom: 10px;
+  padding-left: 5px;
+  height: 80px;
+}
+.story-content{
   padding-top: 5px;
   padding-bottom: 10px;
 }
@@ -157,7 +165,7 @@ html, body{
     overflow: hidden;
 }*/
 .image_items{
-    height: 100px;
+    max-height: 90px;
     border: 1px solid #CCC;
 }
 /*-------------------------------*/
